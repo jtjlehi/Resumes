@@ -108,7 +108,7 @@
 \def\BulletSub#1#2#3#4#5#6{ \def#1{
     \begin{tabularx}{\linewidth}{ @{}l r@{} }
         \textbf{#2} & \hfill #3 \\[3.75pt]
-        \textbf{#4} - #5 \\
+        \textbf{#4} & \hfill #5 \\
         \multicolumn{2}{@{}X@{}}{
             \ignoreemptyitems
             \readlist\bullets{#6.}
@@ -119,8 +119,9 @@
                     \end{itemize}
                 \end{minipage}
             }{}
-
         }
+        \\
+        \\
     \end{tabularx}
 }}
 
@@ -138,11 +139,11 @@
 
 \def\Header{
     \begin{tabularx}{\linewidth}{@{} C @{}}
-    \Huge{\Name} \\[7.5pt]
-    \UrlPill{\Github}{\faGithub}{jtjlehi} \ $|$ \ 
-    \UrlPill{\Linkedin}{\faLinkedin}{jared-jacobson-cs} \ $|$ \ 
-    \UrlPill{mailto:\Email}{\faEnvelope}{\Email} \ $|$ \ 
-    \UrlPill{tel:+\Phone}{\faMobile}{\Phone}
+        \Huge{\Name} \\[7.5pt]
+        \UrlPill{\Github}{\faGithub}{jtjlehi} \ $|$ \ 
+        \UrlPill{\Linkedin}{\faLinkedin}{jared-jacobson-cs} \ $|$ \ 
+        \UrlPill{mailto:\Email}{\faEnvelope}{\Email} \ $|$ \ 
+        \UrlPill{tel:+\Phone}{\faMobile}{\Phone}
     \end{tabularx}
 }
 
