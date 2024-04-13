@@ -112,8 +112,8 @@
             \begin{minipage}[t]{\linewidth}
                 \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
                     \readlist*\bullets{#6}
-                        \foreachitem \z \in \bullets {\item[--]\z.}
-            \end{itemize}
+                    \foreachitem \z \in \bullets {\item[--]\z.}
+                \end{itemize}
         \end{minipage}
         }
     \end{tabularx}
@@ -193,8 +193,56 @@
 %   Languages and Technology
 %----------------------------------------------------------------------------------------
 
+\def\WebLang{
+    \textbf{Web/Mobile:}
+    HTML/CSS,
+    React,
+    React Native,
+    VueJS,
+    Angular,
+    Cordova,
+    Firebase
+}
+\def\ProgramLangs{
+    \textbf{Languages:}
+    C++,
+    C,
+    Rust
+    Haskell,
+    Scheme/Racket,
+    Scala,
+    JavaScript/Typescript,
+    SML,
+    Python,
+    Java,
+    SQL
+}
+\def\Tools{
+    \textbf{Tools:}
+    Git,
+    Vim/Neovim (btw),
+    Bash,
+    VSCode,
+    XCode
+}
+\def\Skills{
+    \textbf{Skills:}
+    Functional Programming,
+    Machine Learning/AI,
+    Object-Oriented Programming,
+    Design Implementation,
+    Library Design,
+    Application Development,
+    Leadership
+}
+
 \MkSection{\Languages} {Languages and Technologies}{
-    todo
+    \begin{itemize}
+        \item \ProgramLangs
+        \item \WebLang
+        \item \Tools
+        \item \Skills
+    \end{itemize}
 }
 
 %----------------------------------------------------------------------------------------
