@@ -1,0 +1,246 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[letterpaper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+\usepackage{listofitems}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%----------------------------------------------------------------------------------------
+%	Variables
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\def\UrlPill#1#2#3{\href{#1}{\raisebox{-0.05\height}#2\ #3}}
+
+\def\Name{Jared Jacobson}
+\def\Github{https://github.com/jtjlehi}
+\def\Linkedin{https://www.linkedin.com/in/jared-jacobson-cs/}
+\def\Email{jared.jacobson.2000@gmail.com}
+\def\Phone{8013689994}
+
+\def\Title{
+    \begin{tabularx}{\linewidth}{@{} C @{}}
+    \Huge{\Name} \\[7.5pt]
+    \UrlPill{\Github}{\faGithub}{jtjlehi} \ $|$ \ 
+    \UrlPill{\Linkedin}{\faLinkedin}{jared-jacobson-cs} \ $|$ \ 
+    \UrlPill{mailto:\Email}{\faEnvelope}{\Email} \ $|$ \ 
+    \UrlPill{tel:+\Phone}{\faMobile}{\Phone}
+    \end{tabularx}
+}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+\setsepchar{.}
+
+\def\BulletSub#1#2#3#4#5{
+    \begin{tabularx}{\linewidth}{ @{}l r@{} }
+        \textbf{#1} & \hfill #2 \\[3.75pt]
+        \textbf{#3} - #4 \\
+        \multicolumn{2}{@{}X@{}}{
+            \begin{minipage}[t]{\linewidth}
+                \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+                    \readlist*\bullets{#5}
+                        \foreachitem \z \in \bullets {\item[--]\z.}
+            \end{itemize}
+        \end{minipage}
+        }
+    \end{tabularx}
+}
+
+\def\Summary{
+    \section{Summary}
+    Successful Software Developer and Researcher offering 3 years of experience in demanding
+environments focused on producing cutting-edge designs. Skilled in directing development with
+creative and performance-oriented approach. A creative problem solver with a people focused
+approach to a plethora of challenges.
+}
+
+\def\UvuResearch{
+    \BulletSub
+    {Language Designer and Researcher}{09/2023 to Present}
+    {Utah Valley University}{Orem, Utah}
+    {
+        Improved state-of-art in static analysis by reducing uncertainty inherit in abstract interpretation.
+        Applied critical thinking skills to identify potential areas for further investigation within programming languages space.
+        Mentored junior designers, fostering collaborative and supportive team environment.
+        Enhanced research quality by diligently reviewing and analyzing over 30 relevant literature sources
+    }
+}
+\def\FourthWall{
+    \BulletSub
+    {Full Stack Web Developer}{12/2020 to 02/2023}
+    {4th Wall FX}{Provo, Utah}
+    {
+        Lead developer and architect on multi-platform application using VueJS, Cordova, and Firebase.
+        Increased application performance by 50\% by optimizing front-end and back-end code for faster loading times.
+        Redesigned database schema, making database easier to add features to, faster, and more robust.
+        Fixed bugs and continued development on multiple mini-games, including total implementation of 'Swimmy Jonah' game.
+        Enhanced user experience by implementing responsive web designs for seamless browsing across various devices, resulting in 5\% increase in user retention.
+        Ensured data security by implementing robust authentication and authorization mechanisms on both client-side and server-side applications
+    }
+}
+\def\LingoTec{
+    \BulletSub
+    {Front-End Developer}{05/2018 to 09/2018}
+    {LingoTec}{Lehi, Utah}
+    {
+        Participated in agile development processes through regular stand-ups, sprint planning sessions, reviews, and retrospectives.
+        Conducted cross-browser testing to ensure consistent user experiences across multiple platforms and devices.
+        Collaborated with cross-functional teams to ensure seamless integration of new features.
+        Converted over 10 JSP programs into VueJS components
+    }
+}
+
+\def\Experience{
+    \section{Experience}
+    \UvuResearch
+    \FourthWall
+    \LingoTec
+}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+\Title
+\Summary
+\Experience
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
+
+2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
+
+2022 & Class 12th Some Board \hfill  (Grades) \\
+
+2021 & Class 10th Some Board \hfill  (Grades) \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\section{Publications}
+\begin{refsection}[citations.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
+Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
