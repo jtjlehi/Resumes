@@ -50,6 +50,7 @@
 \usepackage{url}
 \usepackage{parskip}
 \usepackage{listofitems}
+\usepackage{xifthen}
 
 %other packages for formatting
 \RequirePackage{color}
@@ -109,12 +110,16 @@
         \textbf{#2} & \hfill #3 \\[3.75pt]
         \textbf{#4} - #5 \\
         \multicolumn{2}{@{}X@{}}{
-            \begin{minipage}[t]{\linewidth}
-                \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-                    \readlist*\bullets{#6}
-                    \foreachitem \z \in \bullets {\item[--]\z.}
-                \end{itemize}
-        \end{minipage}
+            \ignoreemptyitems
+            \readlist\bullets{#6.}
+            \ifthenelse{\bulletslen > 0}{
+                \begin{minipage}[t]{\linewidth}
+                    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+                        \foreachitem \z \in \bullets {\item[--]\z.}
+                    \end{itemize}
+                \end{minipage}
+            }{}
+
         }
     \end{tabularx}
 }}
@@ -146,8 +151,7 @@
 %----------------------------------------------------------------------------------------
 
 \MkSection{\Summary} {Summary} {
-    Successful Software Developer and Researcher offering 3 years of experience in demanding environments focused on producing cutting-edge designs. Skilled in directing development with creative and performance-oriented approach. A creative problem solver with a people focused approach to a plethora of challenges.
-}
+    Successful Software Developer and Researcher offering 3 years of experience in demanding environments focused on producing cutting-edge designs. Skilled in directing development with creative and performance-oriented approach. A creative problem solver with a people focused approach to a plethora of challenges.}
 
 %----------------------------------------------------------------------------------------
 % Work Experience
@@ -159,8 +163,7 @@
     Improved state-of-art in static analysis by reducing uncertainty inherit in abstract interpretation.
     Applied critical thinking skills to identify potential areas for further investigation within programming languages space.
     Mentored junior designers, fostering collaborative and supportive team environment.
-    Enhanced research quality by diligently reviewing and analyzing over 30 relevant literature sources
-}
+    Enhanced research quality by diligently reviewing and analyzing over 30 relevant literature sources}
 
 \BulletSub{\FourthWall}
 {Full Stack Web Developer}{12/2020 to 02/2023}
@@ -170,17 +173,15 @@
     Redesigned database schema, making database easier to add features to, faster, and more robust.
     Fixed bugs and continued development on multiple mini-games, including total implementation of 'Swimmy Jonah' game.
     Enhanced user experience by implementing responsive web designs for seamless browsing across various devices, resulting in 5\% increase in user retention.
-    Ensured data security by implementing robust authentication and authorization mechanisms on both client-side and server-side applications
-}
+    Ensured data security by implementing robust authentication and authorization mechanisms on both client-side and server-side applications}
 
 \BulletSub{\LingoTec}
 {Front-End Developer}{05/2018 to 09/2018}
-{LingoTec}{Lehi, Utah}{
+{LingoTec} {Lehi, Utah}{
     Participated in agile development processes through regular stand-ups, sprint planning sessions, reviews, and retrospectives.
     Conducted cross-browser testing to ensure consistent user experiences across multiple platforms and devices.
     Collaborated with cross-functional teams to ensure seamless integration of new features.
-    Converted over 10 JSP programs into VueJS components
-}
+    Converted over 10 JSP programs into VueJS components}
 
 \MkSection{\Experience} {Experience} {
     \UvuResearch
@@ -201,8 +202,7 @@
     VueJS,
     Angular,
     Cordova,
-    Firebase
-}
+    Firebase}
 \def\ProgramLangs{
     \textbf{Languages:}
     C++,
@@ -215,16 +215,14 @@
     SML,
     Python,
     Java,
-    SQL
-}
+    SQL}
 \def\Tools{
     \textbf{Tools:}
     Git,
     Vim/Neovim (btw),
     Bash,
-    VSCode,
-    XCode
-}
+    VS Code,
+    Xcode}
 \def\Skills{
     \textbf{Skills:}
     Functional Programming,
@@ -233,8 +231,7 @@
     Design Implementation,
     Library Design,
     Application Development,
-    Leadership
-}
+    Leadership}
 
 \MkSection{\Languages} {Languages and Technologies}{
     \begin{itemize}
@@ -244,6 +241,25 @@
         \item \Skills
     \end{itemize}
 }
+
+%----------------------------------------------------------------------------------------
+%   Education
+%----------------------------------------------------------------------------------------
+
+\BulletSub{\UVU}
+{Bachelor of Science in Computer Science} {12/2023}
+{Utah Valley University} {3.6 GPA} {
+    Language classes: JavaScript, C++, Rust, Python, Analysis of Programming Languages.
+    Other courses: AI, Operating Systems, Analysis of Algorithms, Discrete Mathematics, Database Theory}
+\BulletSub{\MTECH}
+{Full Stack Web Development}{5/2018}
+{Mountainland Technical College} {Lehi, UT}
+{}
+\MkSection{\Education} {Education} {
+    \UVU
+    \MTECH
+}
+
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -256,5 +272,6 @@
 \Summary
 \Languages
 \Experience
+\Education
 
 \end{document}
